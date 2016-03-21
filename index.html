@@ -24,8 +24,11 @@
 					success: function(data){
 					  //do something with data
 					  var capword = word.toUpperCase();
+					  var i = Math.floor((Math.random() * 5));
+					  var colors = ["red","blue","orange","green","pink"];
+					  var color = colors[i];
 					  if(data[capword]){
-					  	str +="<i>"+capword.fontcolor("blue")+'</i>,';
+					  	str +="<i>"+capword.fontcolor(color)+'</i>,';
 					  	$('#res').html(str);
 					  	$('#meaning').html("<p>"+data[capword]+"</p>");
 					  }else{
