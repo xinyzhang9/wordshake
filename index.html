@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>wordshake</title>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$('#check').click(function(){
+				var word = $("#word").val();
+				check(word);
+			})
+
+			var str = ""
+			var check = function(word){
+				$.ajax({
+					url: 'dictionary.json',
+					type: 'get',
+					dataType: 'json',
+					error: function(data){
+						console.log("failed to load dictionary");
+					},
+					success: function(data){
+					  //do something with data
+					  var capword = word.toUpperCase();
+					  if(data[capword]){
+					  	str +="<i>"+capword.fontcolor("blue")+'</i>,';
+					  	$('#res').html(str);
+					  	$('#meaning').html("<p>"+data[capword]+"</p>");
+					  }else{
+					  	console.log("no such word");
+					  }            
+					}
+				});
+			}
+		})
+			
+			
+			
+	</script>
+</head>
+<body>
+	<h3>WORDSHAKE</h3>
+	<div>Search History</div>
+	<div id = "res"></div>
+	<input type="text" id = "word">
+	<button id = "check">check</button>
+	<div id = "meaning"></div>
+</body>
+</html>
