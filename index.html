@@ -6,7 +6,6 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script>
 		$(document).ready(function(){
-
 			$('#check').click(function(){
 				var word = $("#word").val();
 				check(word);
@@ -28,6 +27,7 @@
 					  var colors = ["red","blue","orange","green","pink"];
 					  var color = colors[i];
 					  if(data[capword]){
+					  	$('#word').val("");
 					  	str +="<i>"+capword.fontcolor(color)+'</i>,';
 					  	$('#res').html(str);
 					  	$('#meaning').html("<p>"+data[capword]+"</p>");
